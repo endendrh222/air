@@ -9,7 +9,7 @@ function FunGetFormatDate(date) {
 	var defTom = FunGetFormatDate('내일날짜');
 	var defMon = FunGetFormatDate('한달뒤날짜');
 	$("#dateRangePicker").val(defTom + " - " + defMon);
-	$("#dateRangePicker").daterangepicker({
+	$("#dateRangePicker").dateRangePicker({
 		'applyClass': 'btn-sm btn-success',
 		'cancelClass': 'btn-sm btn-default',
 		startDate: from,
