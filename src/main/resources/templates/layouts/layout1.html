@@ -28,8 +28,9 @@
     <link rel="stylesheet" th:href="@{/css/flaticon.css}">
     <link rel="stylesheet" th:href="@{/css/icomoon.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
-    <link rel="stylesheet" th:href="@{/css/daterangepicker.css}">
-    
+
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="dist/daterangepicker.min.css">
     <!-- 각 페이지의 CSS가 작성될 위치 -->
 <th:block layout:fragment="css"></th:block>
 </head>
@@ -54,17 +55,46 @@
   <script th:src="@{/js/aos.js}"></script>
   <script th:src="@{/js/jquery.animateNumber.min.js}"></script>
   <script th:src="@{/js/bootstrap-datepicker.js}"></script>
-  
   <script th:src="@{/js/scrollax.min.js}"></script>
   <!--  <script th:src="@{https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false}"></script> 
   		<script th:src="@{/js/jquery.timepicker.min.js}"></script>
   -->
   <script th:src="@{/js/google-map.js}"></script>
   <script th:src="@{/js/main.js}"></script>
-  <script th:src="@{/js/daterangepicker.js}"></script>
-  <script th:src="@{/js/custom.js}"></script>
-  <script th:src="@{/js/datemonth.js}"></script>
   
+  
+  <script th:src="@{/js/datemonth.js}"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>  
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script type="text/javascript" src="moment.min.js"></script>
+  <script type="text/javascript" src="jquery.min.js"></script>
+  <script type="text/javascript" src="dist/jquery.daterangepicker.min.js"></script>
+  
+   <script th:src="@{/js/datepicker.js}"></script>
+   <!--		달력 만들기
+    {
+    	dateFormat: 'yy-mm-dd', //날짜 표시 형식 설정
+        showOtherMonths: true, //이전 달과 다음 달 날짜를 표시
+        showMonthAfterYear:true, //연도 표시 후 달 표시
+        changeYear: true, //연도 선택 콤보박스
+        changeMonth: true, //월 선택 콤보박스                
+        showOn: "both", //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
+        yearSuffix: "년", //연도 뒤에 나오는 텍스트 지정
+        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'], 
+        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'], 
+        dayNamesMin: ['일','월','화','수','목','금','토'], 
+        dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'],
+        minDate: "-1M", // -1D:하루전, -1M:한달전, -1Y:일년전
+        maxDate: "+1M", // +1D:하루후, -1M:한달후, -1Y:일년후
+        buttonImage: "image/calendar.gif", //버튼에 띄워줄 이미지 경로
+        buttonImageOnly: true, //디폴트 버튼 대신 이미지 띄워줌
+        buttonText: "선택", //버튼 마우스오버 시 보이는 텍스트   
+    }	-->		
+  <script>
+    $("#datepicker").datepicker();
+</script>
+ 
+
   <!-- 각 페이지의 스크립트가 작성될 위치 -->
 	<th:block layout:fragment="script"></th:block>
 </body>

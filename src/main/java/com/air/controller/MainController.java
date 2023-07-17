@@ -11,4 +11,8 @@ public class MainController {
 		return "/main";
 	}
 	
+	@GetMapping(value = "/mypage/pageForm")
+	public String testMap() {
+		return "/mypage/myPageForm";
+	}
 }

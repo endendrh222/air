@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout1}">
+	
+<div layout:fragment="content">
+
+<div class="col-sm-2">
+  <div class="input-group">
+  	<span class="input-group-addon">
+  		<i class="fa fa-calendar bigger-110"></i>
+  	</span>
+  	<input type="text" id="datepicker" class="form-control col-xs-12" />
+  </div>
+</div>
+
+<div class="col-sm-3">
+	<div class="input-group">
+		<span class="input-group-addon">
+      		<i class="fa fa-calendar bigger-110"></i>
+      	</span>
+		<input class="form-control" type="text" name="date-range-picker" id="dateRangePicker">
+	</div>
+</div>
+
+
+</div>	
+	
+</html>
