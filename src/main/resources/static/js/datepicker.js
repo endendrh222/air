@@ -1,25 +1,19 @@
-function FunGetFormatDate(date) {
-	    var year = date.getFullYear();                                 //yyyy
-	    var month = (1 + date.getMonth());                     //M
-	    month = month >= 10 ? month : '0' + month;     // month 두자리로 저장
-	    var day = date.getDate();                                        //d
-	    day = day >= 10 ? day : '0' + day;                            //day 두자리로 저장
-	    return month + '/' + day + '/' + year;
-	}
-	var defTom = FunGetFormatDate('내일날짜');
-	var defMon = FunGetFormatDate('한달뒤날짜');
-	$("#dateRangePicker").val(defTom + " - " + defMon);
-	$("#dateRangePicker").dateRangePicker({
-		'applyClass': 'btn-sm btn-success',
-		'cancelClass': 'btn-sm btn-default',
-		startDate: from,
-		locale: {
-		format: 'yyyy-mm-dd',
-		applyLabel: 'Apply',
-		cancelLabel: 'Cancel'
-		},
-		endDate: to
-		}).prev().on(ace.click_event, function () {
-			$(this).next().focus();
-	});
-	    
+1
+
+//한글로 나오게 하기 위해 설정값 사용
+$("#dateRangePicker").daterangepicker({
+    locale: {
+    "separator": " ~ ",                     // 시작일시와 종료일시 구분자
+    "format": 'YYYY-MM-DD',     // 일시 노출 포맷
+    "applyLabel": "확인",                    // 확인 버튼 텍스트
+    "cancelLabel": "취소",                   // 취소 버튼 텍스트
+    "daysOfWeek": ["일", "월", "화", "수", "목", "금", "토"],
+    "monthNames": ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
+    },
+});
+ 
+$("#dateRangePicker").on('show.daterangepicker', function (ev, picker) {
+    $(".yearselect").css("float", "left");
+    $(".monthselect").css("float", "right");
+    $(".cancelBtn").css("float", "right");
+});

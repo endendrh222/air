@@ -11,7 +11,7 @@
     <link th:href="@{https://fonts.googleapis.com/css?family=Alex+Brush}" rel="stylesheet">
 
     <link rel="stylesheet" th:href="@{/css/open-iconic-bootstrap.min.css}">
-    <link rel="stylesheet" th:href="@{css/animate.css}">
+    <link rel="stylesheet" th:href="@{/css/animate.css}">
     
     <link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}">
     <link rel="stylesheet" th:href="@{/css/owl.theme.default.min.css}">
@@ -30,7 +30,7 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
 
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	<link rel="stylesheet" href="dist/daterangepicker.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <!-- 각 페이지의 CSS가 작성될 위치 -->
 <th:block layout:fragment="css"></th:block>
 </head>
@@ -64,13 +64,16 @@
   
   
   <script th:src="@{/js/datemonth.js}"></script>
+  
+  <!-- 달력 1개 짜리 (편도)-->
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>  
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script type="text/javascript" src="moment.min.js"></script>
-  <script type="text/javascript" src="jquery.min.js"></script>
-  <script type="text/javascript" src="dist/jquery.daterangepicker.min.js"></script>
   
+  <!-- 달력 2개 짜리 (왕복)-->
+   <script th:src="@{/js/moment.min.js}"></script>
+   <script th:src="@{/js/daterangepicker.js}"></script>
    <script th:src="@{/js/datepicker.js}"></script>
+   
    <!--		달력 만들기
     {
     	dateFormat: 'yy-mm-dd', //날짜 표시 형식 설정

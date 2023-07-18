@@ -10,9 +10,16 @@
 
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
+          <li class="has-children active" sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><a>관리자메뉴</a>
+			<ul class="dropdown">
+				<li><a href="/admin/flight/new">항공권등록</a></li>
+				<li><a href="/">항공권관리</a></li>
+			</ul>
+		</li>
+
           <li class="nav-item active"><a href="/" class="nav-link">항공권 예매</a></li>
           <li class="nav-item"><a href="/mypage/pageForm" sec:authorize="isAuthenticated()" class="nav-link">마이페이지</a></li>
-          <li class="nav-item"><a href="hotel.html" class="nav-link">이벤트</a></li>
+          <li class="nav-item"><a href="/" class="nav-link">이벤트</a></li>
           <li class="nav-item cta"><a href="/members/login" sec:authorize="isAnonymous()" class="nav-link">로그인</a></li>
 		  <li class="nav-item cta"><a href="/members/logout" sec:authorize="isAuthenticated()" class="nav-link">로그아웃</a></li>
         </ul>
