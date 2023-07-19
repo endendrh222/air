@@ -15,14 +15,14 @@ public class MainFlightDto {
 	
 	private String startCountryName;
 	
-	private SimpleDateFormat startDate;
+	private String startDate;
 	
 	private String leaveCountryName;
 	
-	private SimpleDateFormat leaveDate;
+	private String leaveDate;
 	
 	@QueryProjection
-	public MainFlightDto(Long id, String startCountryName, SimpleDateFormat startDate, String leaveCountryName, SimpleDateFormat leaveDate) {
+	public MainFlightDto(Long id, String startCountryName, String startDate, String leaveCountryName, String leaveDate) {
 		this.id = id;
 		this.startCountryName = startCountryName;
 		this.startDate = startDate;

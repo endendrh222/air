@@ -23,7 +23,7 @@ import lombok.RequiredArgsConstructor;
 public class FlightService {
 	private final FlightRepository flightRepository;
 	
-	public Long saveFlight(FlightFormDto flightFormDto, List<MultipartFile> FlightFileList) throws Exception {
+	public Long saveFlight(FlightFormDto flightFormDto) throws Exception {
 		// 1.항공편 등록
 		Flight flight = flightFormDto.createFlight();
 		flightRepository.save(flight); // insert(저장)
@@ -45,7 +45,7 @@ public class FlightService {
 	}
 	
 	//항공편 수정하기(update)
-	public Long updateFlight(FlightFormDto flightFormDto, List<MultipartFile> flightFileList) throws Exception {
+	public Long updateFlight(FlightFormDto flightFormDto) throws Exception {
 		Flight flight = flightRepository.findById(flightFormDto.getId()).orElseThrow(EntityNotFoundException::new);
 		
 		//update 쿼리문 실행

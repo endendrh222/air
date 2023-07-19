@@ -26,7 +26,7 @@ public class AirImg extends BaseEntity{
 	@JoinColumn(name = "air_id")
 	private Air air;
 	
-	public void updateItemImg(String oriImgName, String imgName, String imgUrl) {
+	public void updateAirImg(String oriImgName, String imgName, String imgUrl) {
 		this.oriImgName = oriImgName;
 		this.imgName = imgName;
 		this.imgUrl = imgUrl;

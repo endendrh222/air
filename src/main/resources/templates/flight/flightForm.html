@@ -31,77 +31,85 @@
 				<div class="col-md-12">
 					<h2 class="h3 mb-3 text-black">상품등록</h2>
 					<div class="p-3 p-lg-5 border">
-						<form role="form" action="/admin/item/new" method="post"
-							enctype="multipart/form-data" th:object="${itemFormDto}"
-							name="itemForm">
+						<form role="form" action="/admin/flight/new" method="post"
+							enctype="multipart/form-data" th:object="${flightFormDto}"
+							name="flightForm">
 
 
 							<input type="hidden" th:field="*{id}" />
 
+
 							<div class="form-group row">
 								<div class="col-md-12">
-									<select class="form-select" th:field="*{itemSellStatus}">
-										<option value="SELL">판매중</option>
-										<option value="SOLD_OUT">품절</option>
-									</select>
+									<label th:for="itemNm" class="text-black">출발국가</label> <input
+										type="text" class="form-control" th:field="*{startCountryName}"
+										placeholder="출발국가명 입력">
+									<p th:if="${#fields.hasErrors('startCountryName')}" th:errors="*{startCountryName}"
+										class="fieldError">Incorrect Data</p>
+								</div>
+							</div>
+
+
+							<div class="form-group row">
+								<div class="col-md-12">
+									<label th:for="startDate" class="text-black">출발일자</label> 
+										<input th:for="startDate"  class="form-control" th:field="*{startDate}" type="text" name="date-Start-range-picker" id="dateStartRangePicker">
+									<p th:if="${#fields.hasErrors('startDate')}"
+										th:errors="*{startDate}" class="fieldError">Incorrect
+										Data</p>
+								</div>
+							</div>
+
+												
+
+
+							<div class="form-group row">
+								<div class="col-md-12">
+									<label th:for="startTime" class="text-black">출발시간</label>
+									<input
+										type="text" class="form-control" th:field="*{startTime}"
+										placeholder="출발시간 입력">
+									<p th:if="${#fields.hasErrors('startTime')}"
+										th:errors="*{startTime}" class="fieldError">Incorrect
+										Data</p>
 								</div>
 							</div>
 
 							<div class="form-group row">
-								<div class="col-md-12">
-									<label th:for="itemNm" class="text-black">상품명</label> <input
-										type="text" class="form-control" th:field="*{itemNm}"
-										placeholder="상품명 입력">
-									<p th:if="${#fields.hasErrors('itemNm')}" th:errors="*{itemNm}"
+								<div class="col-md-12"> 
+									<label th:for="leaveCountryName" class="text-black">도착국가</label> <input
+										type="text" class="form-control" th:field="*{leaveCountryName}"
+										placeholder="도착국가명 입력">
+									<p th:if="${#fields.hasErrors('leaveCountryName')}" th:errors="*{leaveCountryName}"
 										class="fieldError">Incorrect Data</p>
 								</div>
 							</div>
 
 							<div class="form-group row">
 								<div class="col-md-12">
-									<label th:for="price" class="text-black">가격</label> <input
-										type="text" class="form-control" th:field="*{price}"
-										placeholder="가격 입력" onkeyup="inputNumberFormat(this)">
-									<p th:if="${#fields.hasErrors('price')}" th:errors="*{price}"
-										class="fieldError">Incorrect Data</p>
-								</div>
-							</div>
-
-							<div class="form-group row">
-								<div class="col-md-12">
-									<label th:for="stockNumber" class="text-black">재고</label> <input
-										type="text" class="form-control" th:field="*{stockNumber}"
-										placeholder="재고 입력">
-									<p th:if="${#fields.hasErrors('stockNumber')}"
-										th:errors="*{stockNumber}" class="fieldError">Incorrect
+									<label th:for="leaveDate" class="text-black">도착일자</label> 
+										<input th:for="leaveDate"  class="form-control" th:field="*{leaveDate}" type="text" name="date-leave-range-picker" id="dateleaveRangePicker">
+									<p th:if="${#fields.hasErrors('leaveDate')}"
+										th:errors="*{leaveDate}" class="fieldError">Incorrect
 										Data</p>
 								</div>
 							</div>
 
 							<div class="form-group row">
 								<div class="col-md-12">
-									<label th:for="itemDetail" class="text-black">상품 상세내용</label>
-									<textarea rows=10 class="form-control" th:field="*{itemDetail}"
-										placeholder="상품 상세내용" id="floatingTextarea"></textarea>
-									<p th:if="${#fields.hasErrors('itemDetail')}"
-										th:errors="*{itemDetail}" class="fieldError">Incorrect
+									<label th:for="leaveTime" class="text-black">도착시간</label>
+									<input
+										type="text" class="form-control" th:field="*{leaveTime}"
+										placeholder="도착시간 입력">
+									<p th:if="${#fields.hasErrors('leaveTime')}"
+										th:errors="*{leaveTime}" class="fieldError">Incorrect
 										Data</p>
-								</div>
-							</div>
-
-
-							<div class="form-group row"
-								th:each="num: ${#numbers.sequence(1,5)}">
-								<div class="col-md-12">
-									<label for="formFile" class="form-label"
-										th:text="상품이미지 + ${num}"></label> <input class="form-control"
-										type="file" id="itemImgFile" name="itemImgFile">
 								</div>
 							</div>
 
 							<div class="form-group">
 								<div class="col-md-12 d-flex justify-content-center">
-									<button type="button" onclick="beforeSubmit()"
+									<button type="submit" onclick="beforeSubmit()"
 										class="btn btn-primary mb-3" style="width: 150px;">상품등록</button>
 								</div>
 							</div>
@@ -147,34 +155,12 @@
 	
 	// 상품등록 버튼을 누를 때 천단위 콤마를 제거한 후 전송.
 	function beforeSubmit() {
-		const f = document.itemForm;
-		let price = f.price.value;
-		f.price.value = Number(price.replaceAll(',', ''));
+		const f = document.flightForm;
 		
 		f.submit();
 	}
 	
 	
-	// 파일 첨부 시 확장자가 이미지 파일인지 검사한다.
-		function bindDomEvent() {
-			$(".custom-file-input").on(
-					"change",
-					function() {
-						var fileName = $(this).val().split("\\").pop(); //이미지 파일명
-						var fileExt = fileName.substring(fileName
-								.lastIndexOf(".") + 1); // 확장자 추출
-						fileExt = fileExt.toLowerCase(); //소문자 변환
-
-						if (fileExt != "jpg" && fileExt != "jpeg"
-								&& fileExt != "gif" && fileExt != "png"
-								&& fileExt != "bmp") {
-							alert("이미지 파일만 등록이 가능합니다.");
-							return;
-						}
-
-						$(this).siblings(".custom-file-label").html(fileName);
-					});
-		}
 	</script>
 </th:block>
 

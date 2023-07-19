@@ -60,18 +60,25 @@ public class FlightController {
 		return "flight/flightForm";
 	}
 	
-	@PostMapping(value = "/admin/flight/{flightId}")
-	public String flightUpdate(@Valid FlightFormDto flightFormDto, Model model, BindingResult bindingResult, @RequestParam("flightImgFile") List<MultipartFile> flightImgFileList) {
+
+	
+	
+	
+	
+	
+	
+	@PostMapping(value = "/admin/flight/new")
+	public String flightUpdate(@Valid FlightFormDto flightFormDto,  BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
 			return "flight/flightForm";
 		}
 		
 		try {
-			flightService.updateFlight(flightFormDto, flightImgFileList);
+			flightService.saveFlight(flightFormDto);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			model.addAttribute("errorMessage", "항공편 수정 중 에러가 발생했습니다.");
+			model.addAttribute("errorMessage", "항공편 등록 중 에러가 발생했습니다.");
 			return "flight/flightForm";
 		}
 		return "redirect:/";

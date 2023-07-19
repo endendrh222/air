@@ -7,6 +7,7 @@ import org.modelmapper.ModelMapper;
 import com.air.entity.Flight;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,20 +20,20 @@ public class FlightFormDto {
 	@NotBlank(message = " 출발국가는 필수 입력값 입니다.")
 	private String startCountryName;
 	
-	@NotBlank(message = " 출발일은 필수 입력값 입니다.")
-	private SimpleDateFormat startDate;
+	@NotNull(message = " 출발일은 필수 입력값 입니다.")
+	private String startDate;
 	
-	@NotBlank(message = " 출발시간은 필수 입력값 입니다.")
-	private SimpleDateFormat startTime;
+	@NotNull(message = " 출발시간은 필수 입력값 입니다.")
+	private String startTime;
 	
 	@NotBlank(message = " 도착국가는 필수 입력값 입니다.")
 	private String leaveCountryName;
 	
-	@NotBlank(message = " 도착일 필수 입력값 입니다.")
-	private SimpleDateFormat leaveDate;
+	@NotNull(message = " 도착일 필수 입력값 입니다.")
+	private String leaveDate;
 	
-	@NotBlank(message = " 도착시간은 필수 입력값 입니다.")
-	private SimpleDateFormat leaveTime;
+	@NotNull(message = " 도착시간은 필수 입력값 입니다.")
+	private String leaveTime;
 	
 	private static ModelMapper modelMapper = new ModelMapper();
 	

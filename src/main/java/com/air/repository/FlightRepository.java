@@ -11,5 +11,4 @@ import com.air.entity.Flight;
 public interface FlightRepository extends JpaRepository<Flight, Long>, FlightRepositoryCustom {
 	List<Flight> findByStartCountryName(String startCountryName); 
 	
-	List<Flight> findByStartDate(LocalDateTime startDate);
 }

@@ -9,10 +9,10 @@ import lombok.*;
 
 @Entity
 @Table(name="flight")
-@ToString
 @Getter
 @Setter
-public class Flight {
+@ToString
+public class Flight extends BaseEntity{
 	@Id
 	@Column(name="flight_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,19 +22,19 @@ public class Flight {
 	private String startCountryName;
 	
 	@Column(nullable = false)
-	private SimpleDateFormat startDate;
+	private String startDate;
 	
 	@Column(nullable = false)
-	private SimpleDateFormat startTime;
+	private String startTime;
 	
 	@Column(nullable = false)
 	private String leaveCountryName;
 	
 	@Column(nullable = false)
-	private SimpleDateFormat leaveDate;
+	private String leaveDate;
 
 	@Column(nullable = false)
-	private SimpleDateFormat leaveTime;
+	private String leaveTime;
 	
 	// flight 엔티티 업데이트
 	public void updateFlight(FlightFormDto flightFormDto) {

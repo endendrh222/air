@@ -3,6 +3,19 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layouts/layout1}">
 	
+<!-- 각 페이지의 CSS가 작성될 위치 -->
+<th:block layout:fragment="css">
+	<style>
+.ftco-navbar-light {
+  background: transparent !important;
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  z-index: 3; }
+</style>
+</th:block>	
+	
 <div layout:fragment="content">
 <div class="hero-wrap js-fullheight" style="background-image: url('/images/bg_3.jpg');">
       <div class="overlay"></div>
