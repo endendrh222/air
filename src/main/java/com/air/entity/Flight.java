@@ -1,14 +1,12 @@
 package com.air.entity;
 
-import java.text.SimpleDateFormat;
-
 import com.air.dto.FlightFormDto;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name="flight")
+@Table(name="flights")
 @Getter
 @Setter
 @ToString

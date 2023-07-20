@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout1}">
+
+
+<th:block layout:fragment="css">
+	<style>
+		select {
+		margin: 2px;
+		width: 33.33%;
+		}
+	
+		a {
+			cursor: pointer
+		}
+	</style>
+</th:block>
+
+<div layout:fragment="content">
+	<div class="bg-light py-3">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 mb-0">
+					<a href="/">Home</a> <span class="mx-2 mb-0">/</span> 
+					<strong	class="text-black">항공편관리</strong>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="site-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2 class="h3 mb-3 text-black">항공편관리</h2>
+					<form th:action="@{'/admin/flights/' + ${flights.number}}" method="get" th:object="${flights}" >
+						<table class="table table-responsive-md">
+							<thead>
+								<tr>
+									<th scope="col">id</th>
+									<th scope="col">출발지</th>
+									<th scope="col">출발일자</th>
+									<th scope="col">출발시간</th>
+									<th scope="col">도착지</th>
+									<th scope="col">도착일자</th>
+									<th scope="col">도착시간</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- 조회된 데이터를 출력한다 -->
+								<tr th:each="flight, status: ${flights.getContent()}">
+									  <td>
+									    <a th:href="'/admin/flight/' + ${flight.id}"
+									       th:text="${flight.id}"> 
+										</a>
+									  </td>
+									  <td th:text="${flight.startCountryName}"></td>
+									  <td th:text="${flight.startDate}"></td>
+									  <td th:text="${flight.startTime}"></td>
+									  <td th:text="${flight.leaveCountryName}"></td>
+									  <td th:text="${flight.leaveDate}"></td>
+									  <td th:text="${flight.leaveTime}"></td>
+								</tr>
+							</tbody>
+						</table>
+
+						<!-- 페이징버튼 -->
+						<!-- start = (현재 페이지 번호/보여줄 페이지 수) * 보여줄 페이지 수 + 1, 페이지 시작번호-->
+						<!-- end = start + (보여줄 페이지수 - 1), 페이지 끝번호 -->
+												<nav
+							th:with="start=${(flights.number/maxPage)*maxPage + 1}
+									,end=(${(flights.totalPages == 0) ? 1 : (start + (maxPage - 1) < flights.totalPages ? start + (maxPage - 1) : flights.totalPages)})"
+							aria-label="Page navigation example">
+							
+							<ul class="pagination d-flex justify-content-center">
+								<li class="page-item" th:classappend="${flights.first}?'disabled'">
+									<a class="page-link"
+									th:onclick="'javascript:page(' + ${flights.number - 1} +')'">이전</a>
+								</li>
+								<li class="page-item"
+									th:each="page: ${#numbers.sequence(start, end)}"
+									th:classappend="${flights.number eq page-1}?'active':''">
+									<a
+									class="page-link" th:inline="text"
+									th:onclick="'javascript:page(' + ${page - 1} +')'">[[${page}]]</a>
+								</li>
+								<li class="page-item" th:classappend="${flights.last}?'disabled'">
+									<a class="page-link"
+									th:onclick="'javascript:page(' + ${flights.number + 1} +')'">다음</a>
+								</li>
+							</ul>
+						</nav>
+
+						<div class="row" th:object="${flightSearchDto}" style="height: 40px;">
+							<div class="col=lg-2"></div>
+							<div class="col=lg-5" style="display: flex;">
+								<!-- 상품 등록일 -->
+								<select th:field="*{searchDateType}" class="form-control">
+									<option value="all">전체기간</option>
+									<option value="1d">1일</option>
+									<option value="1w">1주</option>
+									<option value="1m">1개월</option>
+									<option value="6m">6개월</option>
+								</select>
+								<!-- 상품판매 상태 -->
+								<!-- 상품명, 등록자 선택 -->
+								<select th:field="*{searchBy}" class="form-control">
+									<option value="startCountryName">출발국가명</option>
+								</select>
+							</div>
+							<div class="col=lg-3">
+								<div style="display: flex;">
+									<input type="text" class="form-control" th:field="*{searchQuery}" placeholder="검색어 입력">
+									<button id="searchBtn" type="submit"
+										class="btn btn-primary mb-3">검색</button>
+								</div>
+							</div>
+							<div class="col=lg-2"></div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<th:block layout:fragment="script">
+	<script th:inline="javascript">
+		$(document).ready(function() {
+			$("#searchBtn").on("click", function(e){
+				e.preventDefault(); //submit되는걸 방지
+				page(0);
+			});
+		});
+		
+		//페이징버튼 눌렀을 때, 검색버튼 눌렀을 때 검색어와 selectbox를 get방식으로 주소이동시켜준다.
+		function page(page) {
+			//입력한 값을 전부 가지고 온다.
+			var searchDateType = $("#searchDateType").val();
+			var searchBy = $("#searchBy").val();
+			var searchQuery = $("#searchQuery").val();
+		
+			//주소 이동
+			location.href = "/admin/flights/" + page
+						  + "?searchDateType=" + searchDateType
+						  + "&searchBy=" + searchBy
+						  + "&searchQuery=" + searchQuery;
+		}
+	</script>
+</th:block>
+
+</html>

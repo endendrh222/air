@@ -65,4 +65,10 @@ public class FlightService {
 		Page<MainFlightDto> mainFlightPage = flightRepository.getMainFlightPage(flightSearchDto, pageable);
 		return mainFlightPage;
 	}
+	
+	public void deleteFlight(Long flightId) {
+		Flight flight = flightRepository.findById(flightId).orElseThrow(EntityNotFoundException::new);
+		
+		flightRepository.delete(flight);
+	}
 }
