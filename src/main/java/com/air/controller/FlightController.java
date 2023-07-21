@@ -1,6 +1,7 @@
 package com.air.controller;
 
 import java.security.Principal;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.air.dto.FlightFormDto;
 import com.air.dto.FlightSearchDto;
@@ -98,21 +101,7 @@ public class FlightController {
 			return "flight/flightModifyForm";
 		}
 	
-		//항공편 수정페이지 보여주기
-				@GetMapping(value = "/admin/flight/{flightId}")
-				public String airClassDtl(@PathVariable("flightId") Long flightId, Model model ) {
-					try {
-						FlightFormDto flightFormDto = flightService.getFlightDtl(flightId);
-						model.addAttribute("flightFormDto", flightFormDto);
-					} catch (Exception e) {
-						e.printStackTrace();
-						model.addAttribute("errorMessage","항공편 정보를 가져올때 에러가 발생했습니다.");
-						
-						model.addAttribute("flightFormDto", new FlightFormDto());
-						return "flight/flightForm";
-					}
-					return "flight/flightModifyForm";
-				}
+	
 		
 		
 	
@@ -157,13 +146,17 @@ public class FlightController {
 	//항공편 삭제
 	@DeleteMapping(value = "/admin/{flightId}/delete")
 	public @ResponseBody ResponseEntity flightDelete(@RequestBody @PathVariable("flightId") Long flightId,
-				Principal principal) {		
+				Principal principal) {
+		
+		
 		try {
 			flightService.deleteFlight(flightId);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+			
+		
 		
 		return new ResponseEntity<Long>(flightId, HttpStatus.OK);
 	}

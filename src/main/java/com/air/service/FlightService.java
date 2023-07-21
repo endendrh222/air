@@ -42,6 +42,7 @@ public class FlightService {
 		return flightFormDto;
 	}
 	
+	
 	//항공편 수정하기(update)
 	public Long updateFlight(FlightFormDto flightFormDto) throws Exception {
 		Flight flight = flightRepository.findById(flightFormDto.getId()).orElseThrow(EntityNotFoundException::new);
