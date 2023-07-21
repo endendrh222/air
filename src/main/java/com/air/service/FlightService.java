@@ -1,12 +1,10 @@
 package com.air.service;
 
-import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.air.dto.FlightFormDto;
 import com.air.dto.FlightSearchDto;
@@ -54,6 +52,14 @@ public class FlightService {
 		return flight.getId();
 	}
 	
+	public void deleteFlight(Long flightId) {
+		Flight flight = flightRepository.findById(flightId)
+									    .orElseThrow(EntityNotFoundException::new);
+		
+		flightRepository.delete(flight);
+	}
+	
+	
 	@Transactional(readOnly = true)
 	public Page<Flight> getAdminFlightPage(FlightSearchDto flightSearchDto, Pageable pageable ) {
 		Page<Flight> flightPage = flightRepository.getAdminFlightPage(flightSearchDto, pageable);
@@ -66,9 +72,4 @@ public class FlightService {
 		return mainFlightPage;
 	}
 	
-	public void deleteFlight(Long flightId) {
-		Flight flight = flightRepository.findById(flightId).orElseThrow(EntityNotFoundException::new);
-		
-		flightRepository.delete(flight);
-	}
 }

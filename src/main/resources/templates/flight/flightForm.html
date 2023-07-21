@@ -129,14 +129,6 @@
 <th:block layout:fragment="script">
 	<script th:inline="javascript">
 	
-	$(document).ready(function(){
-		var errorMessage = [[${errorMessage}]];
-    	if(errorMessage != null){
-        	alert(errorMessage);
-    	}
-    	
-		bindDomEvent(); // 이벤트륻 등록
-	})
 		
 	// 천단위 콤마찍는 함수
 	function inputNumberFormat(obj) {

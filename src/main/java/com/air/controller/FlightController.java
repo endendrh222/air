@@ -1,7 +1,6 @@
 package com.air.controller;
 
 import java.security.Principal;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -16,9 +15,8 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.air.dto.FlightFormDto;
 import com.air.dto.FlightSearchDto;
@@ -67,9 +65,56 @@ public class FlightController {
 	}
 	
 
+	//항공편 관리
 	
+		@GetMapping(value = {"/admin/flights", "/admin/flights/{page}"})
+		public String flightManage(FlightSearchDto flightSearchDto, @PathVariable("page") Optional<Integer> page, Model model) {
+			
+			// url 경로에 페이지가 있으면 해당 페이지 번호를 조회하도록하고, 페이지 번호가 없으면 0 페이지를 조회
+			Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0 , 3); // of(조회할 페이지의 번호: 0부터 시작, 한 페이지 당 조회할 데이터의 갯수)
+			
+			Page<Flight> flights = flightService.getAdminFlightPage(flightSearchDto, pageable);
+			
+			model.addAttribute("flights", flights);
+			model.addAttribute("flightSearchDto", flightSearchDto);
+			model.addAttribute("maxPage", 5);
+			
+			return "flight/flightMng";
+		}
+		
+		//항공편 수정페이지 보여주기
+		@GetMapping(value = "/admin/flight/{flightId}")
+		public String flightDtl(@PathVariable("flightId") Long flightId, Model model ) {
+			try {
+				FlightFormDto flightFormDto = flightService.getFlightDtl(flightId);
+				model.addAttribute("flightFormDto", flightFormDto);
+			} catch (Exception e) {
+				e.printStackTrace();
+				model.addAttribute("errorMessage","항공편 정보를 가져올때 에러가 발생했습니다.");
+				
+				model.addAttribute("flightFormDto", new FlightFormDto());
+				return "flight/flightForm";
+			}
+			return "flight/flightModifyForm";
+		}
 	
-	
+		//항공편 수정페이지 보여주기
+				@GetMapping(value = "/admin/flight/{flightId}")
+				public String airClassDtl(@PathVariable("flightId") Long flightId, Model model ) {
+					try {
+						FlightFormDto flightFormDto = flightService.getFlightDtl(flightId);
+						model.addAttribute("flightFormDto", flightFormDto);
+					} catch (Exception e) {
+						e.printStackTrace();
+						model.addAttribute("errorMessage","항공편 정보를 가져올때 에러가 발생했습니다.");
+						
+						model.addAttribute("flightFormDto", new FlightFormDto());
+						return "flight/flightForm";
+					}
+					return "flight/flightModifyForm";
+				}
+		
+		
 	
 	// 항공편 등록(insert)
 	
@@ -90,38 +135,7 @@ public class FlightController {
 		return "redirect:/";
 	}
 	
-	//항공편 관리
 	
-	@GetMapping(value = {"/admin/flights", "/admin/flights/{page}"})
-	public String flightManage(FlightSearchDto flightSearchDto, @PathVariable("page") Optional<Integer> page, Model model) {
-		
-		// url 경로에 페이지가 있으면 해당 페이지 번호를 조회하도록하고, 페이지 번호가 없으면 0 페이지를 조회
-		Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0 , 3); // of(조회할 페이지의 번호: 0부터 시작, 한 페이지 당 조회할 데이터의 갯수)
-		
-		Page<Flight> flights = flightService.getAdminFlightPage(flightSearchDto, pageable);
-		
-		model.addAttribute("flights", flights);
-		model.addAttribute("flightSearchDto", flightSearchDto);
-		model.addAttribute("maxPage", 5);
-		
-		return "flight/flightMng";
-	}
-	
-	//항공편 수정페이지 보여주기
-	@GetMapping(value = "/admin/flight/{flightId}")
-	public String flightDtl(@PathVariable("flightId") Long flightId, Model model ) {
-		try {
-			FlightFormDto flightFormDto = flightService.getFlightDtl(flightId);
-			model.addAttribute("flightFormDto", flightFormDto);
-		} catch (Exception e) {
-			e.printStackTrace();
-			model.addAttribute("errorMessage","항공편 정보를 가져올때 에러가 발생했습니다.");
-			
-			model.addAttribute("flightFormDto", new FlightFormDto());
-			return "flight/flightForm";
-		}
-		return "flight/flightModifyForm";
-	}
 	
 	//항공편 수정(update)
 	@PostMapping(value = "/admin/flight/{flightId}")
@@ -140,10 +154,21 @@ public class FlightController {
 		return "redirect:/";
 	}
 	
-	@DeleteMapping("/flight/{flightId}/delete")
-	public @ResponseBody ResponseEntity deleteFlight(@PathVariable("flightId") Long flightId, Principal principal) {
-		flightService.deleteFlight(flightId);
+	//항공편 삭제
+	@DeleteMapping(value = "/admin/{flightId}/delete")
+	public @ResponseBody ResponseEntity flightDelete(@RequestBody @PathVariable("flightId") Long flightId,
+				Principal principal) {		
+		try {
+			flightService.deleteFlight(flightId);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return new ResponseEntity<Long>(flightId, HttpStatus.OK);
 	}
+	
+	
+
 	
 }

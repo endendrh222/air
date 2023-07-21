@@ -45,6 +45,7 @@
 									<th scope="col">도착지</th>
 									<th scope="col">도착일자</th>
 									<th scope="col">도착시간</th>
+									<th scope="col">좌석관리</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -61,6 +62,10 @@
 									  <td th:text="${flight.leaveCountryName}"></td>
 									  <td th:text="${flight.leaveDate}"></td>
 									  <td th:text="${flight.leaveTime}"></td>
+									  <td>
+									  <a th:id="${flight.id}"type="submit"
+										class="btn btn-primary mb-3" th:href="'/'">좌석관리</a>
+									  </td>	
 								</tr>
 							</tbody>
 						</table>

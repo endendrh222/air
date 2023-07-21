@@ -43,4 +43,8 @@ public class Flight extends BaseEntity{
 		this.leaveDate = flightFormDto.getLeaveDate();
 		this.leaveTime = flightFormDto.getLeaveTime();
 	}
+	
+	public void deleteFlight(FlightFormDto flightFormDto) {
+		deleteFlight(flightFormDto);
+	}
 }
