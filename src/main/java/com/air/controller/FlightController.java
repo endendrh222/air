@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.air.dto.AirClassDto;
 import com.air.dto.FlightFormDto;
 import com.air.dto.FlightSearchDto;
 import com.air.dto.MainFlightDto;
@@ -42,9 +43,9 @@ public class FlightController {
 		System.out.println(flightSearchDto);
 		
 		Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 6); // of(조회할 페이지의 번호 , 한 페이지 당 조회할 데이터 개수)
-		Page<MainFlightDto> flights = flightService.getMainFlightPage(flightSearchDto, pageable);
+		Page<MainFlightDto> flight = flightService.getMainFlightPage(flightSearchDto, pageable);
 		
-		model.addAttribute("flights", flights);
+		model.addAttribute("flight", flight);
 		model.addAttribute("flightSearchDto", flightSearchDto);
 		model.addAttribute("maxPage", 5);
 		

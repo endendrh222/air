@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout1}">
+<head>
+	<meta name="_csrf" th:content="${_csrf.token}" />
+	<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+</head>
+<!-- 각 페이지의 CSS가 작성될 위치 -->
+<th:block layout:fragment="css">
+	<style>
+.
+fieldError {
+	color: #bd2130;
+}
+</style>
+</th:block>
+
+<div layout:fragment="content">
+	<div class="bg-light py-3">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 mb-0">
+					<a href="/">Home</a> <span class="mx-2 mb-0">/</span> <strong
+						class="text-black">항공편 수정</strong>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+</div>
+	
+<!-- 각 페이지의 스크립트가 작성될 위치 -->
+<th:block layout:fragment="script">
+	<script th:inline="javascript">
+		// 상품등록 버튼을 누를 때 천단위 콤마를 제거한 후 전송.
+		function beforeSubmit() {
+			const f = document.flightForm;
+
+			f.submit();
+		}
+
+		function deleteFlight(flightId) {
+			const deleteconf = confirm("주문 내역을 삭제하시겠습니까?");
+			if (!deleteconf)
+				return;
+
+			var token = $("meta[name='_csrf']").attr("content");
+			var header = $("meta[name='_csrf_header']").attr("content");
+
+			var url = "/admin/"   + flightId +"/delete";
+
+			$.ajax({
+				url : url,
+				type : "DELETE", //전송방식
+				contentType : "application/json",
+				beforeSend : function(xhr) {
+					//데이터를 전송하기 전에 헤더에 xsrf값
+					xhr.setRequestHeader(header, token);
+				},
+				dataType : "json",
+				cache : false,
+				success : function(result, status) {
+					// Handle success, e.g., refresh the page or update the UI
+					location.href = "/";
+				},
+				error : function(jqXHR, status, error) {
+					if (jqXHR.status == "401") {
+						alert("로그인 후 이용해주세요.");
+						location.href = "/member/login";
+					} else {
+						alert(jqXHR.responseText);
+					}
+				},
+			});
+		}
+	</script>
+</th:block>
+
+</html>

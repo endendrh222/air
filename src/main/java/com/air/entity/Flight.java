@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name="flights")
+@Table(name="flight")
 @Getter
 @Setter
 @ToString

@@ -6,10 +6,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.air.dto.AirClassDto;
 import com.air.dto.FlightFormDto;
 import com.air.dto.FlightSearchDto;
 import com.air.dto.MainFlightDto;
+import com.air.entity.AirClass;
 import com.air.entity.Flight;
+import com.air.repository.AirClassRepository;
 import com.air.repository.FlightRepository;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -41,6 +44,7 @@ public class FlightService {
 		
 		return flightFormDto;
 	}
+	
 	
 	
 	//항공편 수정하기(update)

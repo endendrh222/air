@@ -1,6 +1,5 @@
 package com.air.dto;
 
-import java.text.SimpleDateFormat;
 
 import org.modelmapper.ModelMapper;
 

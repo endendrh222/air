@@ -12,20 +12,30 @@ import lombok.*;
 @Setter
 public class AirClass {
 	@Id
-	@Column(name="class_id")
+	@Column(name="air_class_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+		
+	private int economyPrice;
 	
-	private String class_name;
+	private int businessPrice;
 	
-	private int orderPrice;
+	private int firstPrice;
 	
 	@Enumerated(EnumType.STRING)
-	private AirSellStatus airSellStatus;
+	private AirSellStatus economySellStatus;
+
+	@Enumerated(EnumType.STRING)
+	private AirSellStatus businessSellStatus;
 	
-	private String airClassNumber;
+	@Enumerated(EnumType.STRING)
+	private AirSellStatus firstSellStatus;
+		
+	private int economyStockNumber;
+
+	private int businessStockNumber;
 	
-	private int stockNumber;
+	private int firstStockNumber;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "flight_id")

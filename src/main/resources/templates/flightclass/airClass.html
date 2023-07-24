@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout1}">
+
+<!-- 각 페이지의 CSS가 작성될 위치 -->
+<th:block layout:fragment="css">
+	<style>
+.fieldError {
+	color: #bd2130;
+}
+</style>
+</th:block>
+
+<div layout:fragment="content">
+
+	<div class="bg-light py-3">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 mb-0">
+					<a href="/">Home</a> <span class="mx-2 mb-0">/</span> <strong
+						class="text-black">좌석등록</strong>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="site-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2 class="h3 mb-3 text-black">좌석등록</h2>
+					<div class="p-3 p-lg-5 border">
+						<form role="form" action="/admin/airClass/new" method="post"
+							enctype="multipart/form-data" th:object="${airClassDto}"
+							name="flightForm">
+
+
+							<input type="hidden" th:field="*{id}" />
+
+								
+							<div class="form-group row">
+								<div class="col-md-12">
+									<label th:for="economySellStatus" class="text-black">이코노미 좌석상태 </label>
+									<br>
+									<select class="form-select" th:field="*{economySellStatus}">
+										<option value="SELL">판매중</option>
+										<option value="SOLD_OUT">품절</option>
+									</select>
+								</div>
+							</div>
+							
+							<div class="form-group row">
+								<div class="col-md-12">
+									<label th:for="economyPrice" class="text-black">이코노미 금액</label> <input
+										type="text" class="form-control" th:field="*{economyPrice}"
+										placeholder="출발국가명 입력">
+									<p th:if="${#fields.hasErrors('economyPrice')}" th:errors="*{economyPrice}"
+										class="fieldError">Incorrect Data</p>
+								</div>
+							</div>
+							
+							<div class="form-group row">
+								<div class="col-md-12">
+									<label th:for="economyStockNumber" class="text-black">이코노미 좌석수</label> <input
+										type="text" class="form-control" th:field="*{economyStockNumber}"
+										placeholder="출발국가명 입력">
+									<p th:if="${#fields.hasErrors('economyStockNumber')}" th:errors="*{economyStockNumber}"
+										class="fieldError">Incorrect Data</p>
+								</div>
+							</div>
+							
+							<div class="form-group row">
+								<div class="col-md-12">
+									<label th:for="businessSellStatus" class="text-black">비즈니스 좌석상태 </label>
+									<br>
+									<select class="form-select" th:field="*{businessSellStatus}">
+										<option value="SELL">판매중</option>
+										<option value="SOLD_OUT">품절</option>
+									</select>
+								</div>
+							</div>
+							
+							<div class="form-group row">
+								<div class="col-md-12">
+									<label th:for="businessPrice" class="text-black">비지니스 금액</label> <input
+										type="text" class="form-control" th:field="*{businessPrice}"
+										placeholder="출발국가명 입력">
+									<p th:if="${#fields.hasErrors('businessPrice')}" th:errors="*{businessPrice}"
+										class="fieldError">Incorrect Data</p>
+								</div>
+							</div>
+							
+							<div class="form-group row">
+								<div class="col-md-12">
+									<label th:for="businessStockNumber" class="text-black">비지니스 좌석수</label> <input
+										type="text" class="form-control" th:field="*{businessStockNumber}"
+										placeholder="출발국가명 입력">
+									<p th:if="${#fields.hasErrors('businessStockNumber')}" th:errors="*{businessStockNumber}"
+										class="fieldError">Incorrect Data</p>
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<div class="col-md-12">
+									<label th:for="firstSellStatus" class="text-black">퍼스트 좌석상태 </label>
+									<br>
+									<select class="form-select" th:field="*{firstSellStatus}">
+										<option value="SELL">판매중</option>
+										<option value="SOLD_OUT">품절</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<div class="col-md-12">
+									<label th:for="firstPrice" class="text-black">퍼스트 금액</label> <input
+										type="text" class="form-control" th:field="*{firstPrice}"
+										placeholder="출발국가명 입력">
+									<p th:if="${#fields.hasErrors('firstPrice')}" th:errors="*{firstPrice}"
+										class="fieldError">Incorrect Data</p>
+								</div>
+							</div>
+							
+							<div class="form-group row">
+								<div class="col-md-12">
+									<label th:for="firstStockNumber" class="text-black">퍼스트 좌석수</label> <input
+										type="text" class="form-control" th:field="*{firstStockNumber}"
+										placeholder="출발국가명 입력">
+									<p th:if="${#fields.hasErrors('firstStockNumber')}" th:errors="*{firstStockNumber}"
+										class="fieldError">Incorrect Data</p>
+								</div>
+							</div>
+
+
+							<div class="form-group">
+								<div class="col-md-12 d-flex justify-content-center">
+									<button type="submit" onclick="beforeSubmit()"
+										class="btn btn-primary mb-3" style="width: 150px;">상품등록</button>
+								</div>
+							</div>
+
+							<input type="hidden" th:name="${_csrf.parameterName}"
+								th:value="${_csrf.token}">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- 각 페이지의 스크립트가 작성될 위치 -->
+<th:block layout:fragment="script">
+	<script th:inline="javascript">
+	
+		
+	// 천단위 콤마찍는 함수
+	function inputNumberFormat(obj) {
+		let value = obj.value;	// 입력한 데이터
+		value = Number(value.replaceAll(',', ''));	// 콤마가 있으면 없애준다.
+		
+		if(isNaN(value)) {	
+			// 숫자가 아니면 0으로 바꾼다
+			obj.value = 0;
+		} else {
+			// 숫자면 콤마(,)를 붙여준다.
+			const formatValue = value.toLocaleString('ko-KR');
+			obj.value = formatValue;
+		}
+	}
+	
+	// 상품등록 버튼을 누를 때 천단위 콤마를 제거한 후 전송.
+	function beforeSubmit() {
+		const f = document.airClass;
+		
+		
+		f.submit();
+	}
+	
+	
+	</script>
+</th:block>
+
+</html>

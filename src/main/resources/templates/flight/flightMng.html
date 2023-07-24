@@ -64,7 +64,7 @@
 									  <td th:text="${flight.leaveTime}"></td>
 									  <td>
 									  <a th:id="${flight.id}"type="submit"
-										class="btn btn-primary mb-3" th:href="'/'">좌석관리</a>
+										class="btn btn-primary mb-3" th:href="'/admin/airClass/' + ${flight.id}">좌석관리</a>
 									  </td>	
 								</tr>
 							</tbody>
