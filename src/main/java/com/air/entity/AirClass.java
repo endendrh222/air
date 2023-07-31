@@ -1,6 +1,7 @@
 package com.air.entity;
 
 import com.air.constant.AirSellStatus;
+import com.air.dto.AirClassDto;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -41,5 +42,19 @@ public class AirClass {
 	@JoinColumn(name = "flight_id")
 	private Flight flight;
 	
+	public void updateAirClass(AirClassDto airClassDto) {
+		this.economyPrice = airClassDto.getEconomyPrice();
+		this.economySellStatus = airClassDto.getEconomySellStatus();
+		this.economyStockNumber = airClassDto.getEconomyStockNumber();
+		this.businessPrice = airClassDto.getBusinessPrice();
+		this.businessSellStatus = airClassDto.getBusinessSellStatus();
+		this.businessStockNumber = airClassDto.getBusinessStockNumber();
+		this.firstPrice = airClassDto.getFirstPrice();
+		this.firstSellStatus = airClassDto.getFirstSellStatus();
+		this.firstStockNumber = airClassDto.getFirstStockNumber();
+	}
 	
+	public void deleteAirClass(AirClassDto airClassDto) {
+		deleteAirClass(airClassDto);
+	}
 }
