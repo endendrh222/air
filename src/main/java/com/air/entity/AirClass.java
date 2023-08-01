@@ -16,11 +16,14 @@ public class AirClass {
 	@Column(name="air_class_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-		
+	
+	@Column(nullable = false)
 	private int economyPrice;
 	
+	@Column(nullable = false)
 	private int businessPrice;
 	
+	@Column(nullable = false)
 	private int firstPrice;
 	
 	@Enumerated(EnumType.STRING)
@@ -31,11 +34,14 @@ public class AirClass {
 	
 	@Enumerated(EnumType.STRING)
 	private AirSellStatus firstSellStatus;
-		
+	
+	@Column(nullable = false)
 	private int economyStockNumber;
-
+	
+	@Column(nullable = false)
 	private int businessStockNumber;
 	
+	@Column(nullable = false)
 	private int firstStockNumber;
 	
 	@ManyToOne(fetch = FetchType.LAZY)

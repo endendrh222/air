@@ -2,7 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layouts/layout1}">
-
+<head>
+	<meta name="_csrf" th:content="${_csrf.token}" />
+	<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+</head>
 <!-- 각 페이지의 CSS가 작성될 위치 -->
 <th:block layout:fragment="css">
 	<style>
@@ -138,7 +141,7 @@
 							<div class="form-group">
 								<div class="col-md-12 d-flex justify-content-center">
 									<button type="submit" onclick="beforeSubmit()"
-										class="btn btn-primary mb-3" style="width: 150px;">상품등록</button>
+										class="btn btn-primary mb-3" style="width: 150px;">좌석 등록</button>
 								</div>
 							</div>
 

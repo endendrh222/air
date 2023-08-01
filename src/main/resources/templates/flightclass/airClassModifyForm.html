@@ -35,9 +35,9 @@ fieldError {
 					<h2 class="h3 mb-3 text-black">좌석 수정</h2>
 					<div class="p-3 p-lg-5 border">
 						<form role="form"
-							th:action="@{'/admin/airClass/' + ${airClassId}}"
+							th:action="@{'/admin/airClass/' + ${airClassDto.id}}"
 							method="post" enctype="multipart/form-data"
-							th:object="${airClassDto}" name="airClassForm">
+							th:object="${airClassDto}" name="airClass">
 
 							<a href="/" th:text="${id}">a</a>
 
@@ -170,20 +170,21 @@ fieldError {
 	<script th:inline="javascript">
 		// 상품등록 버튼을 누를 때 천단위 콤마를 제거한 후 전송.
 		function beforeSubmit() {
-			const f = document.airClassForm;
-
-			f.submit();
-		}
+		const f = document.airClass;
+		
+		
+		f.submit();
+	}
 
 		function deleteAirClass(airClassId) {
-			const deleteconf = confirm("주문 내역을 삭제하시겠습니까?");
+			const deleteconf = confirm("좌석 내역을 삭제하시겠습니까?");
 			if (!deleteconf)
 				return;
 
 			var token = $("meta[name='_csrf']").attr("content");
 			var header = $("meta[name='_csrf_header']").attr("content");
 
-			var url = "/admin/"   + airClassId +"/delete";
+			var url = "/admin/airClass/"   + airClassId +"/delete";
 
 			$.ajax({
 				url : url,

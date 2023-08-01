@@ -28,7 +28,7 @@ public class AirClassController {
 	private final AirClassService airClassService;
 	
 	
-	//좌석 등록/수정 페이지
+	//좌석 등록 및 수정 페이지
 	@GetMapping(value = "/admin/airClass/{airClassId}")
 	public String airClassDtl(@PathVariable("airClassId") Long airClassId, Model model) {
 		try {
@@ -44,7 +44,7 @@ public class AirClassController {
 		return "flightclass/airClassModifyForm";
 	}
 	
-	
+	//좌석 등록
 	@PostMapping(value = "/admin/airClass/new")
 	public String airClassUpdate(@Valid AirClassDto airClassDto,  BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
@@ -63,11 +63,11 @@ public class AirClassController {
 	}
 	
 			
-			//항공편 수정(update)
+			//좌석 수정(update)
 			@PostMapping(value = "/admin/airClass/{airClassId}")
 			public String airClassUpdate(@Valid AirClassDto airClassDto, Model model, BindingResult bindingResult) {
 				if(bindingResult.hasErrors()) {
-					return "flightclass/airClass";
+					return "flightclass/airClassModifyForm";
 				}
 				
 				try {
@@ -75,14 +75,14 @@ public class AirClassController {
 				} catch (Exception e) {
 					e.printStackTrace();
 					model.addAttribute("errorMessage" , "항공편 수정 중 에러가 발생했습니다.");
-					return "flightclass/airClass";
+					return "flightclass/airClassModifyForm";
 				}
 				return "redirect:/";
 			}
 			
 			
 			//항공편 삭제
-			@DeleteMapping(value = "/admin/{airClassId}/delete")
+			@DeleteMapping(value = "/admin/airClass/{airClassId}/delete")
 			public @ResponseBody ResponseEntity airClassDelete(@RequestBody @PathVariable("airClassId") Long airClassId,
 						Principal principal) {
 				
