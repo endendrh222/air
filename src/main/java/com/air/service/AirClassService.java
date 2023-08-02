@@ -1,9 +1,12 @@
 package com.air.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.air.dto.AirClassDto;
+import com.air.dto.FlightSearchDto;
 import com.air.entity.AirClass;
 import com.air.repository.AirClassRepository;
 
@@ -27,7 +30,7 @@ public class AirClassService {
 
 	//좌석 수정하기(update)
 	public Long updateAirClass(AirClassDto airClassDto) throws Exception {
-		AirClass airClass = airClassRepository.findById(airClassDto.getId()).orElseThrow(EntityNotFoundException::new);
+		AirClass airClass = airClassRepository.findById(airClassDto.getAirClassId()).orElseThrow(EntityNotFoundException::new);
 		
 		//update 쿼리문 실행
 		airClass.updateAirClass(airClassDto);
@@ -41,7 +44,6 @@ public class AirClassService {
 		airClassRepository.delete(airClass);
 	}
 	
-		
 	
 	@Transactional(readOnly = true) // 트랜잭션 읽기 전용(변경감지를 수행하지 않음) -> 성능향상
 	public AirClassDto getAirClassDtl(Long airClassId) {

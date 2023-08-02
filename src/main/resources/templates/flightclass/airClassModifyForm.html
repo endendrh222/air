@@ -35,7 +35,7 @@ fieldError {
 					<h2 class="h3 mb-3 text-black">좌석 수정</h2>
 					<div class="p-3 p-lg-5 border">
 						<form role="form"
-							th:action="@{'/admin/airClass/' + ${airClassDto.id}}"
+							th:action="@{'/admin/airClass/' + ${airClassDto.airClassId}}"
 							method="post" enctype="multipart/form-data"
 							th:object="${airClassDto}" name="airClass">
 
@@ -146,8 +146,8 @@ fieldError {
 								<div class="col-md-12 d-flex justify-content-center">
 								<button type="button"
 									class="btn btn-danger waves-effect waves-light"
-									th:id="${airClassDto.id}" th:value="${airClassDto.id}"
-									th:onclick="'javascript:deleteAirClass(' + ${airClassDto.id} +')'">삭제하기</button>
+									th:id="${airClassDto.airClassId}" th:value="${airClassDto.airClassId}"
+									th:onclick="'javascript:deleteAirClass(' + ${airClassDto.airClassId} +')'">삭제하기</button>
 								</div>
 							</div>
 

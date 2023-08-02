@@ -31,6 +31,7 @@ public class AirClassController {
 	//좌석 등록 및 수정 페이지
 	@GetMapping(value = "/admin/airClass/{airClassId}")
 	public String airClassDtl(@PathVariable("airClassId") Long airClassId, Model model) {
+	
 		try {
 			AirClassDto airClassDto = airClassService.getAirClassDtl(airClassId);
 			model.addAttribute("airClassDto", airClassDto);
@@ -69,6 +70,7 @@ public class AirClassController {
 				if(bindingResult.hasErrors()) {
 					return "flightclass/airClassModifyForm";
 				}
+				
 				
 				try {
 					airClassService.updateAirClass(airClassDto);

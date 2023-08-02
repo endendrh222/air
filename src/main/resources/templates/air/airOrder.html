@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout1}">
+
+<div layout:fragment="content">
+
+
+
+	<section class="ftco-section ftco-degree-bg">
+		<div class="container">
+			<div class="sidebar-wrap bg-light ftco-animate">
+				<h3 class="heading mb-4">왕복</h3>
+				<form action="" method="get" class="d-block d-flex">
+					<div class="fields d-block d-flex">
+
+						<div class="select-wrap one-third">
+							<div class="input-group">
+								<span class="input-group-addon"> <i
+									class="fa fa-calendar bigger-110"></i>
+								</span> <input class="form-control" type="text"
+									name="date-range-picker" id="dateRangePicker"
+									style="width: 230px; margin-right: 10px;">
+							</div>
+						</div>
+
+
+
+
+						<div class="select-wrap one-third">
+							<div class="icon">
+								<span class="ion-ios-arrow-down"></span>
+							</div>
+							<select name="" id="" class="form-control"
+								placeholder="Keyword search"
+								style="width: 210px; margin-right: 10px;">
+								<option value="">출발지를 선택해주세요.</option>
+								<option value="">한국</option>
+								<option value="">일본</option>
+								<option value="">제주도</option>
+								<option value="">부산</option>
+							</select>
+						</div>
+
+
+						<div class="select-wrap one-third">
+							<div class="icon">
+								<span class="ion-ios-arrow-down"></span>
+							</div>
+							<select name="" id="" class="form-control"
+								placeholder="Keyword search"
+								style="width: 210px; margin-right: 10px;">
+								<option value="">도착지를 선택해주세요.</option>
+								<option value="">제주도</option>
+								<option value="">일본</option>
+								<option value="">한국</option>
+								<option value="">부산</option>
+								<option value="">중국</option>
+								<option value="">러시아</option>
+							</select>
+						</div>
+
+						<div class="select-wrap one-third">
+							<div class="icon">
+								<span class="ion-ios-arrow-down"></span>
+							</div>
+							<select name="" id="" class="form-control"
+								placeholder="Keyword search" style="width: 150px;">
+								<option value="">1인</option>
+								<option value="">2인</option>
+								<option value="">3인</option>
+								<option value="">4인</option>
+							</select>
+						</div>
+
+					</div>
+					<input type="submit" class="search-submit btn btn-primary"
+						value="조회" style="width: 110px;">
+				</form>
+			</div>
+			<div class="row">
+				<div class="col-lg-9">
+					<div class="row">
+						<div class="ftco-animate">
+							<form th:action="@{'/admin/flights/' + ${flights.number}}"
+								method="get" th:object="${flights}">
+								<table class="table table-responsive-md">
+									<tr th:each="flight, status: ${flights.getContent()}">
+
+										<div class="destination">
+											<div class="text p-3" style="width: 300px;">
+												<div class="d-flex">
+													<div class="one" th:text="${flight.startTime}" style="width: 100px;font-size: 30px;text-align: center;"></div>
+													<svg xmlns="http://www.w3.org/2000/svg" width="16"
+														height="16" fill="currentColor" class="bi bi-arrow-right"
+														viewBox="0 0 16 16" style="width: 50px; height: 50px;">
+ 													 <path fill-rule="evenodd"
+															d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+													</svg>
+													<div class="one" th:text="${flight.leaveTime}" style="width: 100px;font-size: 30px;text-align: center;"></div>
+
+
+												</div>
+											</div>
+										</div>
+
+
+
+										<!-- 조회된 데이터를 출력한다 -->
+
+									</tr>
+
+								</table>
+							</form>
+
+
+						</div>
+					</div>
+
+				</div>
+				<!-- .col-md-8 -->
+			</div>
+
+
+		</div>
+	</section>
+	<!-- .section -->
+</div>
+</html>

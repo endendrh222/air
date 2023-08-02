@@ -7775,7 +7775,7 @@ h1, h2, h3, h4, h5,
     opacity: 1; }
   .destination .text {
     border: 1px solid #e6e6e6;
-    border-top: 1px solid transparent;
+   <!-- border-top: 1px solid transparent; -->
     background: #fff; }
     .destination .text h3 {
       font-size: 18px; }

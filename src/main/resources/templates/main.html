@@ -2,293 +2,405 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layouts/layout1}">
-	
+
 <!-- 각 페이지의 CSS가 작성될 위치 -->
 <th:block layout:fragment="css">
 	<style>
 .ftco-navbar-light {
-  background: transparent !important;
-  position: absolute;
-  top: 20px;
-  left: 0;
-  right: 0;
-  z-index: 3; }
+	background: transparent !important;
+	position: absolute;
+	top: 20px;
+	left: 0;
+	right: 0;
+	z-index: 3;
+}
 </style>
-</th:block>	
-	
+</th:block>
+
 <div layout:fragment="content">
-<div class="hero-wrap js-fullheight" style="background-image: url('/images/bg_3.jpg');">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
-          <div class="col-md-9 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><strong>다양한 도시로 <br></strong> 여행을 떠나보세요.</h1>
-            <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">여행 예약하기</p>
-            <div class="block-17 my-4">
-              
-             
-             
-              <form action="" method="post" class="d-block d-flex">
-                <div class="fields d-block d-flex">
-                 
-                <div class="col-sm-6">
-	<div class="input-group">
-		<span class="input-group-addon">
-      		<i class="fa fa-calendar bigger-110"></i>
-      	</span>
-		<input class="form-control" type="text" name="date-range-picker" id="dateRangePicker">
+	<div class="hero-wrap js-fullheight"
+		style="background-image: url('/images/bg_3.jpg');">
+		<div class="overlay"></div>
+		<div class="container">
+			<div
+				class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
+				data-scrollax-parent="true">
+				<div class="col-md-9 ftco-animate"
+					data-scrollax=" properties: { translateY: '70%' }">
+					<h1 class="mb-4"
+						data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+						<strong>다양한 도시로 <br></strong> 여행을 떠나보세요.
+					</h1>
+					<p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">여행
+						예약하기</p>
+					<div class="block-17 my-4" style="width: 1110px;">
+
+
+
+						<form action="" method="post" class="d-block d-flex">
+							<div class="fields d-block d-flex">
+
+								<div class="col-sm-4">
+									<div class="input-group">
+										<span class="input-group-addon"> <i
+											class="fa fa-calendar bigger-110"></i>
+										</span> <input class="form-control" type="text"
+											name="date-range-picker" id="dateRangePicker">
+									</div>
+								</div>
+
+
+
+
+								<div class="select-wrap one-third">
+									<div class="icon">
+										<span class="ion-ios-arrow-down"></span>
+									</div>
+									<select name="" id="" class="form-control"
+										placeholder="Keyword search">
+										<option value="">출발지를 선택해주세요.</option>
+										<option value="">한국</option>
+										<option value="">일본</option>
+										<option value="">제주도</option>
+										<option value="">부산</option>
+									</select>
+								</div>
+
+
+								<div class="select-wrap one-third">
+									<div class="icon">
+										<span class="ion-ios-arrow-down"></span>
+									</div>
+									<select name="" id="" class="form-control"
+										placeholder="Keyword search">
+										<option value="">도착지를 선택해주세요.</option>
+										<option value="">제주도</option>
+										<option value="">일본</option>
+										<option value="">한국</option>
+										<option value="">부산</option>
+										<option value="">중국</option>
+										<option value="">러시아</option>
+									</select>
+								</div>
+
+								<div class="select-wrap one-third">
+									<div class="icon">
+										<span class="ion-ios-arrow-down"></span>
+									</div>
+									<select name="" id="" class="form-control"
+										placeholder="Keyword search">
+										<option value="">1인</option>
+										<option value="">2인</option>
+										<option value="">3인</option>
+										<option value="">4인</option>
+									</select>
+								</div>
+
+							</div>
+							<input type="submit" class="search-submit btn btn-primary"
+								value="조회">
+						</form>
+
+
+
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+
+
+
+
+	<section class="ftco-section services-section bg-light">
+		<div class="container">
+			<div class="row d-flex">
+				<div class="col-md-3 d-flex align-self-stretch ftco-animate">
+					<div class="media block-6 services d-block text-center">
+						<div class="d-flex justify-content-center">
+							<div class="icon">
+								<span class="flaticon-guarantee"></span>
+							</div>
+						</div>
+						<div class="media-body p-2 mt-2">
+							<h3 class="heading mb-3">최저가 보장</h3>
+							<p>가장 저렴한 가격으로 고객을 모십니다.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 d-flex align-self-stretch ftco-animate">
+					<div class="media block-6 services d-block text-center">
+						<div class="d-flex justify-content-center">
+							<div class="icon">
+								<span class="flaticon-like"></span>
+							</div>
+						</div>
+						<div class="media-body p-2 mt-2">
+							<h3 class="heading mb-3">편안한 여행</h3>
+							<p>고객의 편의성을 중요시 합니다.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 d-flex align-self-stretch ftco-animate">
+					<div class="media block-6 services d-block text-center">
+						<div class="d-flex justify-content-center">
+							<div class="icon">
+								<span class="flaticon-detective"></span>
+							</div>
+						</div>
+						<div class="media-body p-2 mt-2">
+							<h3 class="heading mb-3">최고의 여행지</h3>
+							<p>고객이 만족할 수 있는 여행지로 초대합니다.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 d-flex align-self-stretch ftco-animate">
+					<div class="media block-6 services d-block text-center">
+						<div class="d-flex justify-content-center">
+							<div class="icon">
+								<span class="flaticon-support"></span>
+							</div>
+						</div>
+						<div class="media-body p-2 mt-2">
+							<h3 class="heading mb-3">고객 상담</h3>
+							<p>빠른 상담서비스로 고객을 응대합니다.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="ftco-section ftco-destination">
+		<div class="container">
+			<div class="row justify-content-start mb-5 pb-3">
+				<div class="col-md-7 heading-section ftco-animate">
+					<span class="subheading">추천</span>
+					<h2 class="mb-4">
+						<strong>추천</strong> 관광지
+					</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="destination-slider owl-carousel ftco-animate">
+						<div class="item">
+							<div class="destination">
+								<a href="#"
+									class="img d-flex justify-content-center align-items-center"
+									style="background-image: url(images/destination-1.jpg);">
+									<div
+										class="icon d-flex justify-content-center align-items-center">
+										<span class="icon-search2"></span>
+									</div>
+								</a>
+								<div class="text p-3">
+									<h3>
+										<a href="#">파리</a>
+									</h3>
+									<span class="listing">15 검색중</span>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="destination">
+								<a href="#"
+									class="img d-flex justify-content-center align-items-center"
+									style="background-image: url(images/destination-2.jpg);">
+									<div
+										class="icon d-flex justify-content-center align-items-center">
+										<span class="icon-search2"></span>
+									</div>
+								</a>
+								<div class="text p-3">
+									<h3>
+										<a href="#">미국</a>
+									</h3>
+									<span class="listing">20 검색중</span>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="destination">
+								<a href="#"
+									class="img d-flex justify-content-center align-items-center"
+									style="background-image: url(images/destination-3.jpg);">
+									<div
+										class="icon d-flex justify-content-center align-items-center">
+										<span class="icon-search2"></span>
+									</div>
+								</a>
+								<div class="text p-3">
+									<h3>
+										<a href="#">영국</a>
+									</h3>
+									<span class="listing">10 검색중</span>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="destination">
+								<a href="#"
+									class="img d-flex justify-content-center align-items-center"
+									style="background-image: url(images/destination-4.jpg);">
+									<div
+										class="icon d-flex justify-content-center align-items-center">
+										<span class="icon-search2"></span>
+									</div>
+								</a>
+								<div class="text p-3">
+									<h3>
+										<a href="#">싱가포르</a>
+									</h3>
+									<span class="listing">3 검색중</span>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="destination">
+								<a href="#"
+									class="img d-flex justify-content-center align-items-center"
+									style="background-image: url(images/destination-5.jpg);">
+									<div
+										class="icon d-flex justify-content-center align-items-center">
+										<span class="icon-search2"></span>
+									</div>
+								</a>
+								<div class="text p-3">
+									<h3>
+										<a href="#">호주</a>
+									</h3>
+									<span class="listing">3 검색중</span>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="destination">
+								<a href="#"
+									class="img d-flex justify-content-center align-items-center"
+									style="background-image: url(images/destination-6.jpg);">
+									<div
+										class="icon d-flex justify-content-center align-items-center">
+										<span class="icon-search2"></span>
+									</div>
+								</a>
+								<div class="text p-3">
+									<h3>
+										<a href="#">이탈리아</a>
+									</h3>
+									<span class="listing">3 검색중</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+
+
+
+
+
+
+	<section class="ftco-section bg-light">
+		<div class="container">
+			<div class="row justify-content-start mb-5 pb-3">
+				<div class="col-md-7 heading-section ftco-animate">
+					<span class="subheading">여행정보</span>
+					<h2>
+						<strong>팁</strong> &amp; 소식
+					</h2>
+				</div>
+			</div>
+			<div class="row d-flex">
+				<div class="col-md-3 d-flex ftco-animate">
+					<div class="blog-entry align-self-stretch">
+						<a href="blog-single.html" class="block-20"
+							style="background-image: url('images/image_1.jpg');"> </a>
+						<div class="text p-4 d-block">
+							<span class="tag">제목</span>
+							<h3 class="heading mt-3">
+								<a href="#">내용을 입력하세요. (20자 이상)</a>
+							</h3>
+							<div class="meta mb-3">
+								<div>
+									<a href="#">등록일</a>
+								</div>
+								<div>
+									<a href="#">등록자</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 d-flex ftco-animate">
+					<div class="blog-entry align-self-stretch">
+						<a href="blog-single.html" class="block-20"
+							style="background-image: url('images/image_2.jpg');"> </a>
+						<div class="text p-4">
+							<span class="tag">제목</span>
+							<h3 class="heading mt-3">
+								<a href="#">내용을 입력하세요. (20자 이상)</a>
+							</h3>
+							<div class="meta mb-3">
+								<div>
+									<a href="#">등록일</a>
+								</div>
+								<div>
+									<a href="#">등록자</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 d-flex ftco-animate">
+					<div class="blog-entry align-self-stretch">
+						<a href="blog-single.html" class="block-20"
+							style="background-image: url('images/image_3.jpg');"> </a>
+						<div class="text p-4">
+							<span class="tag">제목</span>
+							<h3 class="heading mt-3">
+								<a href="#">내용을 입력하세요. (20자 이상)</a>
+							</h3>
+							<div class="meta mb-3">
+								<div>
+									<a href="#">등록일</a>
+								</div>
+								<div>
+									<a href="#">등록자</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 d-flex ftco-animate">
+					<div class="blog-entry align-self-stretch">
+						<a href="blog-single.html" class="block-20"
+							style="background-image: url('images/image_4.jpg');"> </a>
+						<div class="text p-4">
+							<span class="tag">제목</span>
+							<h3 class="heading mt-3">
+								<a href="#">내용을 입력하세요. (20자 이상)</a>
+							</h3>
+							<div class="meta mb-3">
+								<div>
+									<a href="#">등록일</a>
+								</div>
+								<div>
+									<a href="#">등록자</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
 </div>
-                  
-            
-                  	
-                  
-                  
-                  
-                  
-                  <div class="select-wrap one-third">
-                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                    <select name="" id="" class="form-control" placeholder="Keyword search">
-						<option value="">여행지를 선택해주세요.</option>
-						<option value="">페루</option>
-						<option value="">일본</option>
-						<option value="">베트남</option>
-						<option value="">브라질</option>
-						<option value="">이스라엘</option>
-						<option value="">중국</option>
-						<option value="">러시아</option>
-                    </select>
-                  </div>
-                </div>
-                <input type="submit" class="search-submit btn btn-primary" value="예약">  
-              </form>
-             
-            
-              
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-
-
-
-    <section class="ftco-section services-section bg-light">
-      <div class="container">
-        <div class="row d-flex">
-          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services d-block text-center">
-              <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-guarantee"></span></div></div>
-              <div class="media-body p-2 mt-2">
-                <h3 class="heading mb-3">최저가 보장</h3>
-                <p>가장 저렴한 가격으로 고객을 모십니다.</p>
-              </div>
-            </div>      
-          </div>
-          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services d-block text-center">
-              <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-like"></span></div></div>
-              <div class="media-body p-2 mt-2">
-                <h3 class="heading mb-3">편안한 여행</h3>
-                <p>고객의 편의성을 중요시 합니다.</p>
-              </div>
-            </div>    
-          </div>
-          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services d-block text-center">
-              <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-detective"></span></div></div>
-              <div class="media-body p-2 mt-2">
-                <h3 class="heading mb-3">최고의 여행지</h3>
-                <p>고객이 만족할 수 있는 여행지로 초대합니다.</p>
-              </div>
-            </div>      
-          </div>
-          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services d-block text-center">
-              <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-support"></span></div></div>
-              <div class="media-body p-2 mt-2">
-                <h3 class="heading mb-3">고객 상담</h3>
-                <p>빠른 상담서비스로 고객을 응대합니다.</p>
-              </div>
-            </div>      
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <section class="ftco-section ftco-destination">
-    	<div class="container">
-    		<div class="row justify-content-start mb-5 pb-3">
-          <div class="col-md-7 heading-section ftco-animate">
-          	<span class="subheading">추천</span>
-            <h2 class="mb-4"><strong>추천</strong> 관광지</h2>
-          </div>
-        </div>
-    		<div class="row">
-    			<div class="col-md-12">
-    				<div class="destination-slider owl-carousel ftco-animate">
-    					<div class="item">
-		    				<div class="destination">
-		    					<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/destination-1.jpg);">
-		    						<div class="icon d-flex justify-content-center align-items-center">
-		    							<span class="icon-search2"></span>
-		    						</div>
-		    					</a>
-		    					<div class="text p-3">
-		    						<h3><a href="#">파리</a></h3>
-		    						<span class="listing">15 검색중</span>
-		    					</div>
-		    				</div>
-	    				</div>
-	    				<div class="item">
-		    				<div class="destination">
-		    					<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/destination-2.jpg);">
-		    						<div class="icon d-flex justify-content-center align-items-center">
-		    							<span class="icon-search2"></span>
-		    						</div>
-		    					</a>
-		    					<div class="text p-3">
-		    						<h3><a href="#">미국</a></h3>
-		    						<span class="listing">20 검색중</span>
-		    					</div>
-		    				</div>
-	    				</div>
-	    				<div class="item">
-		    				<div class="destination">
-		    					<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/destination-3.jpg);">
-		    						<div class="icon d-flex justify-content-center align-items-center">
-		    							<span class="icon-search2"></span>
-		    						</div>
-		    					</a>
-		    					<div class="text p-3">
-		    						<h3><a href="#">영국</a></h3>
-		    						<span class="listing">10 검색중</span>
-		    					</div>
-		    				</div>
-	    				</div>
-	    				<div class="item">
-		    				<div class="destination">
-		    					<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/destination-4.jpg);">
-		    						<div class="icon d-flex justify-content-center align-items-center">
-		    							<span class="icon-search2"></span>
-		    						</div>
-		    					</a>
-		    					<div class="text p-3">
-		    						<h3><a href="#">싱가포르</a></h3>
-		    						<span class="listing">3 검색중</span>
-		    					</div>
-		    				</div>
-	    				</div>
-	    				<div class="item">
-		    				<div class="destination">
-		    					<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/destination-5.jpg);">
-		    						<div class="icon d-flex justify-content-center align-items-center">
-		    							<span class="icon-search2"></span>
-		    						</div>
-		    					</a>
-		    					<div class="text p-3">
-		    						<h3><a href="#">호주</a></h3>
-		    						<span class="listing">3 검색중</span>
-		    					</div>
-		    				</div>
-	    				</div>
-	    				<div class="item">
-		    				<div class="destination">
-		    					<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/destination-6.jpg);">
-		    						<div class="icon d-flex justify-content-center align-items-center">
-		    							<span class="icon-search2"></span>
-		    						</div>
-		    					</a>
-		    					<div class="text p-3">
-		    						<h3><a href="#">이탈리아</a></h3>
-		    						<span class="listing">3 검색중</span>
-		    					</div>
-		    				</div>
-	    				</div>
-    				</div>
-    			</div>
-    		</div>
-    	</div>
-    </section>
-
-  
-
-
-
-  
-
-    
-
-    <section class="ftco-section bg-light">
-      <div class="container">
-        <div class="row justify-content-start mb-5 pb-3">
-          <div class="col-md-7 heading-section ftco-animate">
-            <span class="subheading">여행정보</span>
-            <h2><strong>팁</strong> &amp; 소식</h2>
-          </div>
-        </div>
-        <div class="row d-flex">
-          <div class="col-md-3 d-flex ftco-animate">
-            <div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_1.jpg');">
-              </a>
-              <div class="text p-4 d-block">
-              	<span class="tag">제목</span>
-                <h3 class="heading mt-3"><a href="#">내용을 입력하세요. (20자 이상)</a></h3>
-                <div class="meta mb-3">
-                  <div><a href="#">등록일</a></div>
-                  <div><a href="#">등록자</a></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 d-flex ftco-animate">
-            <div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_2.jpg');">
-              </a>
-              <div class="text p-4">
-              	<span class="tag">제목</span>
-                <h3 class="heading mt-3"><a href="#">내용을 입력하세요. (20자 이상)</a></h3>
-                <div class="meta mb-3">
-                  <div><a href="#">등록일</a></div>
-                  <div><a href="#">등록자</a></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 d-flex ftco-animate">
-            <div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_3.jpg');">
-              </a>
-              <div class="text p-4">
-              	<span class="tag">제목</span>
-                <h3 class="heading mt-3"><a href="#">내용을 입력하세요. (20자 이상)</a></h3>
-                <div class="meta mb-3">
-                  <div><a href="#">등록일</a></div>
-                  <div><a href="#">등록자</a></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 d-flex ftco-animate">
-            <div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_4.jpg');">
-              </a>
-              <div class="text p-4">
-              	<span class="tag">제목</span>
-                <h3 class="heading mt-3"><a href="#">내용을 입력하세요. (20자 이상)</a></h3>
-                <div class="meta mb-3">
-                  <div><a href="#">등록일</a></div>
-                  <div><a href="#">등록자</a></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-		
-</div>	
-	
 </html>

@@ -12,7 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AirClassDto {
-	private Long id;
+	private Long airClassId;
 	
 	@NotNull(message = "이코노미 좌석비용 입력값은 필수 입니다.")
 	private int economyPrice;
