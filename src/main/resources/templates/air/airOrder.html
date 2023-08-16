@@ -6,7 +6,6 @@
 <div layout:fragment="content">
 
 
-
 	<section class="ftco-section ftco-degree-bg">
 		<div class="container">
 			<div class="sidebar-wrap bg-light ftco-animate">
@@ -86,19 +85,25 @@
 								method="get" th:object="${flights}">
 								<table class="table table-responsive-md">
 									<tr th:each="flight, status: ${flights.getContent()}">
-
 										<div class="destination">
 											<div class="text p-3" style="width: 300px;">
 												<div class="d-flex">
+												<div >
+													<div th:text="${flight.startCountryName}" style="text-align: center; height: 30px;"></div>
 													<div class="one" th:text="${flight.startTime}" style="width: 100px;font-size: 30px;text-align: center;"></div>
+												</div>
+												<div style="align-self: center;">
 													<svg xmlns="http://www.w3.org/2000/svg" width="16"
 														height="16" fill="currentColor" class="bi bi-arrow-right"
 														viewBox="0 0 16 16" style="width: 50px; height: 50px;">
  													 <path fill-rule="evenodd"
 															d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
 													</svg>
+												</div>
+												<div>	
+													<div th:text="${flight.leaveCountryName}" style="text-align: center; height: 30px;"></div>
 													<div class="one" th:text="${flight.leaveTime}" style="width: 100px;font-size: 30px;text-align: center;"></div>
-
+												</div>
 
 												</div>
 											</div>
