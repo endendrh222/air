@@ -1,5 +1,6 @@
 package com.air.service;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,8 +16,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Transactional
 public class FlightImgService {
-
-	private String airImgLocation = "C:/air/flight";
+	@Value("${airImgLocation}")
+	private String airImgLocation;
 	
 	private final AirImgRepository airImgRepository;
 	

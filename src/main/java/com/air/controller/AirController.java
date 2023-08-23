@@ -38,6 +38,6 @@ public class AirController {
 		model.addAttribute("maxPage", 5);
 		
 		
-		return "/air/airOrder";
+		return "air/airOrder";
 	}
 }
